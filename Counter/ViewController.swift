@@ -7,14 +7,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
-    @IBOutlet weak var textViewLog: UITextView!
-    @IBOutlet weak var btnReset: UIButton!
-    @IBOutlet weak var btnAddCount: UIButton!
-    @IBOutlet weak var btnSubCount: UIButton!
+    @IBOutlet weak private var textViewLog: UITextView!
+    @IBOutlet weak private var btnReset: UIButton!
+    @IBOutlet weak private var btnAddCount: UIButton!
+    @IBOutlet weak private var btnSubCount: UIButton!
     
-    @IBOutlet weak var counterValue: UILabel!
+    @IBOutlet weak private var counterValue: UILabel!
     
     public var count:Int = 0
     public var log:String = "История изменений: \n"
