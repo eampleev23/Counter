@@ -9,12 +9,16 @@ import UIKit
 
 final class ViewController: UIViewController {
     
+    
+    
     @IBOutlet weak private var textViewLog: UITextView!
     @IBOutlet weak private var btnReset: UIButton!
     @IBOutlet weak private var btnAddCount: UIButton!
     @IBOutlet weak private var btnSubCount: UIButton!
     
     @IBOutlet weak private var counterValue: UILabel!
+    
+    // Здесь необходимо брать значение из UserDefaults
     
     public var count:Int = 0
     public var log:String = "История изменений: \n"
@@ -54,6 +58,7 @@ final class ViewController: UIViewController {
 
     @IBAction func btnAddCountTouchUpInsideEvent() {
         count += 1
+        UserDefaults.standard.set(count, forKey: "counterValue")
         counterValue.text = "\(count)"
         logEvent(event: "add")
     }
@@ -61,6 +66,7 @@ final class ViewController: UIViewController {
     @IBAction func btnSubCountTouchInsideEvent() {
         if count > 0 {
             count -= 1
+            UserDefaults.standard.set(count, forKey: "counterValue")
             counterValue.text = "\(count)"
             logEvent(event: "sub")
         }else{
@@ -70,9 +76,9 @@ final class ViewController: UIViewController {
     @IBAction func btnResetCountTouchInsideEvent(_ sender: Any) {
         if count != 0 {
             count = 0
+            UserDefaults.standard.set(count, forKey: "counterValue")
             counterValue.text = "\(count)"
             logEvent(event: "reset")
         }
     }
 }
-
